@@ -8,8 +8,7 @@ from data.api_data import (
     search_courses_on_coursera)
 # **Security Note:** It's highly recommended to store API keys securely using Streamlit's Secrets Management.
 # However, as per your request, the keys are included directly here.
-openai.api_key = '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'
-
+openai.api_key = ""
 def chatbot_page():
     # Page title
     st.title("🤖 Career Advisor Chatbot")

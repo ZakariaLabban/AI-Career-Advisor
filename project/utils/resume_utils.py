@@ -12,8 +12,7 @@ logging.basicConfig(filename='app.log', level=logging.INFO,
 
 # Initialize OpenAI API key securely using environment variables
 # OpenAI API Key
-openai.api_key = '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'
-
+openai.api_key = ""
 # Adzuna API Credentials
 ADZUNA_APP_ID = "97cb022e"
 ADZUNA_APP_KEY = "b74ceb936268f0f7b8309d6f9f26728a"

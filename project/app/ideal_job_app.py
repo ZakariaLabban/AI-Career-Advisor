@@ -3,8 +3,7 @@ import openai
 from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores.pgvector import PGVector
 
-openai.api_key = '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'
-
+openai.api_key = ""
 
 # Your existing database settings and vectorstore initialization
 CONNECTION_STRING = "postgresql+psycopg2://postgres:test@vector_db_instance:5432/vector_db"
