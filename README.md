@@ -1,5 +1,3 @@
-
-![Screenshot 2024-12-11 230703](https://github.com/user-attachments/assets/7d690186-ae70-452b-89ed-0ba3e5d8fcb3)
 # AI Career Advisor: How to use the Docker Images
 
 This project consists of two Docker containers:
@@ -32,18 +30,25 @@ Run the following command to load the database Docker image:
 docker load < my_pgvector_with_data.tar
 ```
 
-### 2. Run the Database Container
+### 2. Create a Docker Network
+Create a custom network to allow the containers to communicate:
+```bash
+docker network create app_network
+```
+
+### 3. Run the Database Container
 Start the database container with:
 ```bash
-docker run -d --name vector_db_instance -p 5433:5432 my_pgvector_with_data
+docker run -d --name vector_db_instance --network app_network -p 5433:5432 my_pgvector_with_data
 ```
 
 #### Options Explained:
 - `-d`: Runs the container in detached mode.
 - `--name vector_db_instance`: Assigns a name to the container.
+- `--network app_network`: Connects the container to the custom Docker network.
 - `-p 5433:5432`: Maps port 5433 on your machine to port 5432 inside the container.
 
-### 3. Access the Database
+### 4. Access the Database
 The database is now running and accessible with the following details:
 
 - **Host**: `localhost`
@@ -67,11 +72,13 @@ docker load < streamlit_app.tar
 ### 2. Run the Application Container
 Start the Streamlit application with:
 ```bash
-docker run -d -p 8501:8501 streamlit_app
+docker run -d --name streamlit_app_instance --network app_network -p 8501:8501 streamlit_app
 ```
 
 #### Options Explained:
 - `-d`: Runs the container in detached mode.
+- `--name streamlit_app_instance`: Assigns a name to the container.
+- `--network app_network`: Connects the container to the custom Docker network.
 - `-p 8501:8501`: Maps port 8501 on your machine to port 8501 inside the container.
 
 ### 3. Access the Application
@@ -88,7 +95,7 @@ The Streamlit application will load and display its interface.
 ### Database Connection
 The Streamlit application is preconfigured to connect to the database using the following connection string:
 ```bash
-postgresql+psycopg2://postgres:test@localhost:5433/vector_db
+postgresql+psycopg2://postgres:test@vector_db_instance:5432/vector_db
 ```
 Ensure the database container (`vector_db_instance`) is running before starting the Streamlit application.
 
@@ -117,5 +124,4 @@ docker logs CONTAINER_NAME_OR_ID
 ---
 
 Now you're ready to run both the database and the Streamlit application seamlessly! If you face any issues, feel free to contact us at mmc55@mail.aub.edu
-
 
