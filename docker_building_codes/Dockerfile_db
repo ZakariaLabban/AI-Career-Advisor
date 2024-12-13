@@ -1,0 +1,13 @@
+# Use your existing image as the base
+FROM ankane/pgvector:latest
+
+# Set default environment variables (optional, use the same as your original container)
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=test
+ENV POSTGRES_DB=vector_db
+
+# Copy the SQL dump file into the Docker entrypoint directory
+COPY my_database_dump.sql /docker-entrypoint-initdb.d/
+
+# Ensure permissions are correct for the Postgres user
+RUN chown postgres:postgres /docker-entrypoint-initdb.d/my_database_dump.sql

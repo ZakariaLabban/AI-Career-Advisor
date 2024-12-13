@@ -1,0 +1,13 @@
+streamlit
+openai==0.27.8
+pdfplumber
+python-docx
+reportlab
+network
+pyvis
+plotly
+pymupdf
+psycopg2-binary
+pgvector
+langchain
+langchain-community
