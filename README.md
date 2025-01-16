@@ -123,5 +123,5 @@ docker logs CONTAINER_NAME_OR_ID
 
 ---
 
-Now you're ready to run both the database and the Streamlit application seamlessly! If you face any issues, feel free to contact us at mmc55@mail.aub.edu
+Now you're ready to run both the database and the Streamlit application seamlessly! If you face any issues, feel free to contact us at zbl00@mail.aub.edu
 
