@@ -5,7 +5,7 @@ This project consists of two Docker containers:
 1. A PostgreSQL database preconfigured with pgvector and data.
 2. A Streamlit application that interacts with the database.
 
-Follow the steps below to set up and run the project.
+Follow the steps below in order to set up and run the project.
 
 ---
 
